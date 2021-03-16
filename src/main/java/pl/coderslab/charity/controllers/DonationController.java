@@ -40,9 +40,9 @@ public class DonationController {
     @PostMapping("/give")
     public String postGive(@Valid Donation donation, BindingResult result, @RequestParam List<Integer> categories, @RequestParam Integer bagsNum, @RequestParam Integer institutions, @RequestParam String data, @RequestParam String time, @RequestParam String more_info) {
 
-        if (result.hasErrors()) {
-            return "form";
-        }
+//        if (result.hasErrors()) {
+//            return "form";
+//        }
 
         List<Category> cat = new ArrayList<>();
         categories.forEach(e -> cat.add(categoryService.single(e)));

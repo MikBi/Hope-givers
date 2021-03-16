@@ -34,7 +34,6 @@ public class Donation {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private java.time.LocalDate pickUpDate;
-    @NotNull
     private java.time.LocalTime pickUpTime;
     private String pickUpComment;
     @ManyToMany
