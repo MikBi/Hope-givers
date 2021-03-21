@@ -13,17 +13,9 @@
 <body>
 <header>
     <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
-        </ul>
-
         <ul>
-            <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
-            <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
-            <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="index.html#contact" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="/" class="btn btn--without-border">Strona główna</a></li>
+            <li><a href="#con" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
 </header>
@@ -61,7 +53,7 @@
         </div>
         <div class="form-group">
             <h3>Hasło</h3>
-            <input type="password" id="pass" name="pass">
+            <form:password path="password"/>
         </div>
         <div>
             <form:errors path="password"/>
@@ -79,7 +71,7 @@
 </section>
 
 <footer>
-    <div class="contact">
+    <div class="contact" id="con">
         <h2>Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
         <form>

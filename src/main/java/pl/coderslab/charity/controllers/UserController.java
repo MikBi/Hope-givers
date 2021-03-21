@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
 
     @GetMapping("/dashboard")
-    @ResponseBody
     private String dashboard() {
         return "dashboard";
     }
+
+
 }

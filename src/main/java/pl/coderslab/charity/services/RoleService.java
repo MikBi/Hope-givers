@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entities.Role;
 import pl.coderslab.charity.repositories.RoleRepository;
 
+import java.util.List;
+
 @Service
 public class RoleService {
 
@@ -15,5 +17,9 @@ public class RoleService {
 
     public Role single(Integer id) {
         return roleRepository.findTopById(id);
+    }
+
+    public List<Role> all() {
+        return roleRepository.findAll();
     }
 }

@@ -63,7 +63,7 @@ public class HomeController {
 
     @GetMapping("/logout")
     private String logout() {
-        return "logout";
+        return "redirect:login";
     }
 
     @GetMapping("/register")
@@ -73,18 +73,23 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    private String register(@Valid User user, BindingResult result, @RequestParam String pass, @RequestParam String repass) {
+    private String register(@Valid User user, BindingResult result, @RequestParam String repass) {
 
         if (result.hasErrors()) {
             return "register";
         }
 
-        if (!pass.equals(repass)) {
+        if (!user.getPassword().equals(repass)) {
             return "register";
         }
-        user.setPassword(passwordEncoder.encode(pass));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(roleService.single(1));
         userService.add(user);
+        return "login";
+    }
+
+    @GetMapping("/403")
+    private String error403() {
         return "login";
     }
 }

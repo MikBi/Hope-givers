@@ -40,4 +40,8 @@ public class Donation {
     private List<Category> category;
     @ManyToOne
     private Institution institution;
+    @OneToOne
+    private User user;
+    @ManyToOne
+    private Status status;
 }

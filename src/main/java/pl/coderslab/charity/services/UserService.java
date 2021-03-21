@@ -44,4 +44,12 @@ public class UserService implements SimpleServices<User> {
     public User email(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public List<User> allButWithoutOurselves(int id) {
+        return userRepository.findWithoutMe(id);
+    }
+
+    public User IdCheck(int id) {
+        return userRepository.findUsersByAdminId(id);
+    }
 }

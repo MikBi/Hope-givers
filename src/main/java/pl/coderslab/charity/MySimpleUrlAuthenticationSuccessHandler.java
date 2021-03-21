@@ -42,7 +42,7 @@ public class MySimpleUrlAuthenticationSuccessHandler
 
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_USER_PERSON", "/person/dashboard");
-        roleTargetUrlMap.put("ROLE_ADMIN_MEN", "/admin/dashboard");
+        roleTargetUrlMap.put("ROLE_ADMIN_MEN", "/secretCave/dashboard");
 
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
