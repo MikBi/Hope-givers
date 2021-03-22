@@ -49,4 +49,25 @@ public class DonationService implements SimpleServices<Donation> {
     public Integer donationsQuantitySum() {
         return donationRepository.countDonationsQuantity();
     }
+
+    public Integer last24h() {
+        return donationRepository.last24hDonation();
+    }
+
+    public List<Donation> seven() {
+        return donationRepository.get7Donations();
+    }
+
+    public List<Donation> allMine(int id) {
+        return donationRepository.myAllDonations(id);
+    }
+
+    public List<Donation> MySeven(int id) {
+        return  donationRepository.getMine7Donations(id);
+    }
+
+    public Integer MyAmount(int id) {
+        return donationRepository.countMyDonations(id);
+    }
+
 }

@@ -25,7 +25,7 @@
 </head>
 
 <body class="">
-<div class="wrapper ">
+<div class="wrapper" style="background: #f4f3ef;">
     <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo">
             <a href="https://www.creative-tim.com" class="simple-text logo-mini">
@@ -40,39 +40,27 @@
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li>
-                    <a href="<c:url value="/secretCave/dashboard"/>">
+                    <a href="<c:url value="/person/dashboard"/>">
                         <i class="nc-icon nc-spaceship"></i>
                         <p> Dashboard </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/users"/>">
-                        <i class="nc-icon nc-user-run"></i>
-                        <p> Users </p>
-                    </a>
-                </li>
-                <li>
-                    <a href="<c:url value="/secretCave/institutions"/>">
-                        <i class="nc-icon nc-bank"></i>
-                        <p> Institutions </p>
-                    </a>
-                </li>
-                <li>
-                    <a href="<c:url value="/secretCave/categories"/>">
-                        <i class="nc-icon nc-box"></i>
-                        <p> Category </p>
+                    <a href="<c:url value="/person/donations"/>">
+                        <i class="nc-icon nc-app"></i>
+                        <p> Donations </p>
                     </a>
                 </li>
                 <li>
                     <sec:authorize access="isAuthenticated()">
                         <a>
-                        <form action="<c:url value="/logout"/>" method="post">
-                            <i class="nc-icon nc-button-power"></i>
-                            <button type="submit">
-                                <p> Logout </p>
-                            </button>
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </form>
+                            <form action="<c:url value="/logout"/>" method="post">
+                                <i class="nc-icon nc-button-power"></i>
+                                <button type="submit">
+                                    <p> Logout </p>
+                                </button>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            </form>
                         </a>
                     </sec:authorize>
                 </li>
@@ -80,12 +68,14 @@
         </div>
     </div>
 
-    <div class="main-panel">
+    <div class="main-panel" style="background: #f4f3ef;">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Witaj ${Cuser.user.name}<div></div></a>
+                    <a class="navbar-brand" href="javascript:;">Witaj ${Cuser}
+                        <div></div>
+                    </a>
                     <div class="navbar-toggle">
                         <button type="button" class="navbar-toggler">
                             <span class="navbar-toggler-bar bar1"></span>
@@ -137,13 +127,13 @@
                             <div class="row">
                                 <div class="col-5 col-md-4">
                                     <div class="icon-big text-center icon-warning">
-                                        <i class="nc-icon nc-globe text-warning"></i>
+                                        <i class="nc-icon nc-box-2 text-warning"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
-                                        <p class="card-category">Capacity</p>
-                                        <p class="card-title">150GB
+                                        <p class="card-category">Number of your donations</p>
+                                        <p class="card-title"> ${UserAmount}
                                         <p>
                                     </div>
                                 </div>
@@ -151,10 +141,10 @@
                         </div>
                         <div class="card-footer ">
                             <hr>
-                            <div class="stats">
+                            <a href="<c:url value="/secretCave/dashboard"/>" class="stats">
                                 <i class="fa fa-refresh"></i>
                                 Update Now
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -164,13 +154,13 @@
                             <div class="row">
                                 <div class="col-5 col-md-4">
                                     <div class="icon-big text-center icon-warning">
-                                        <i class="nc-icon nc-money-coins text-success"></i>
+                                        <i class="nc-icon nc-bag-16 text-muted"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
-                                        <p class="card-category">Revenue</p>
-                                        <p class="card-title">$ 1,345
+                                        <p class="card-category">Sum of all given bags</p>
+                                        <p class="card-title">${QuantitySum}
                                         <p>
                                     </div>
                                 </div>
@@ -180,7 +170,7 @@
                             <hr>
                             <div class="stats">
                                 <i class="fa fa-calendar-o"></i>
-                                Last day
+                                Holistically
                             </div>
                         </div>
                     </div>
@@ -191,13 +181,13 @@
                             <div class="row">
                                 <div class="col-5 col-md-4">
                                     <div class="icon-big text-center icon-warning">
-                                        <i class="nc-icon nc-vector text-danger"></i>
+                                        <i class="nc-icon nc-circle-10 text-danger"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
-                                        <p class="card-category">Errors</p>
-                                        <p class="card-title">23
+                                        <p class="card-category">Number of users</p>
+                                        <p class="card-title">${useres}
                                         <p>
                                     </div>
                                 </div>
@@ -205,10 +195,10 @@
                         </div>
                         <div class="card-footer ">
                             <hr>
-                            <div class="stats">
-                                <i class="fa fa-clock-o"></i>
-                                In the last hour
-                            </div>
+                            <a href="<c:url value="/secretCave/userAdd"/>" class="stats">
+                                <i class="fa fa-user-plus"></i>
+                                Add new user
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -218,13 +208,13 @@
                             <div class="row">
                                 <div class="col-5 col-md-4">
                                     <div class="icon-big text-center icon-warning">
-                                        <i class="nc-icon nc-favourite-28 text-primary"></i>
+                                        <i class="nc-icon nc-paper text-primary"></i>
                                     </div>
                                 </div>
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
-                                        <p class="card-category">Followers</p>
-                                        <p class="card-title">+45K
+                                        <p class="card-category">Institutions</p>
+                                        <p class="card-title"> ${instSum}
                                         <p>
                                     </div>
                                 </div>
@@ -232,10 +222,10 @@
                         </div>
                         <div class="card-footer ">
                             <hr>
-                            <div class="stats">
-                                <i class="fa fa-refresh"></i>
-                                Update now
-                            </div>
+                            <a href="/secretCave/institutions" class="stats">
+                                <i class="fa fa-search-plus"></i>
+                                Add new Institution
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -244,111 +234,77 @@
                 <div class="col-md-12">
                     <div class="card ">
                         <div class="card-header ">
-                            <h5 class="card-title">Users Behavior</h5>
-                            <p class="card-category">24 Hours performance</p>
+                            <h5 class="card-title">Last 7 donations</h5>
                         </div>
                         <div class="card-body ">
-                            <canvas id=chartHours width="400" height="100"></canvas>
+                            <table class="table">
+                                <thead class=" text-primary">
+                                <th> Type of donation</th>
+                                <th> Quantity</th>
+                                <th> Register Date & Time</th>
+                                <th> Endowed institution</th>
+                                <th> Status</th>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${dono}" var="don">
+                                    <tr class="text-muted">
+                                        <td>${don.category}</td>
+                                        <td>${don.quantity}</td>
+                                        <td>${don.pickUpDate}   :    ${don.pickUpTime}</td>
+                                        <td>${don.institution.name}</td>
+                                        <td>${don.status.name}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="card-footer ">
                             <hr>
-                            <div class="stats">
-                                <i class="fa fa-history"></i> Updated 3 minutes ago
-                            </div>
+                            <a href="<c:url value="/secretCave/dashboard"/>" class="stats text-muted">
+                                <i class="fa fa-refresh"></i>
+                                Update Now
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card ">
-                        <div class="card-header ">
-                            <h5 class="card-title">Email Statistics</h5>
-                            <p class="card-category">Last Campaign Performance</p>
-                        </div>
-                        <div class="card-body ">
-                            <canvas id="chartEmail"></canvas>
-                        </div>
-                        <div class="card-footer ">
-                            <div class="legend">
-                                <i class="fa fa-circle text-primary"></i> Opened
-                                <i class="fa fa-circle text-warning"></i> Read
-                                <i class="fa fa-circle text-danger"></i> Deleted
-                                <i class="fa fa-circle text-gray"></i> Unopened
-                            </div>
-                            <hr>
-                            <div class="stats">
-                                <i class="fa fa-calendar"></i> Number of emails sent
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card card-chart">
-                        <div class="card-header">
-                            <h5 class="card-title">NASDAQ: AAPL</h5>
-                            <p class="card-category">Line Chart with Points</p>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="speedChart" width="400" height="100"></canvas>
-                        </div>
-                        <div class="card-footer">
-                            <div class="chart-legend">
-                                <i class="fa fa-circle text-info"></i> Tesla Model S
-                                <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                            </div>
-                            <hr/>
-                            <div class="card-stats">
-                                <i class="fa fa-check"></i> Data information certified
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="footer footer-black  footer-white ">
-            <div class="container-fluid">
-                <div class="row">
-                    <nav class="footer-nav">
-                        <ul>
-                            <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                            <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                            <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-                        </ul>
-                    </nav>
-                    <div class="credits ml-auto">
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="credits ml-auto">
               <span class="copyright">
                 © <script>
                   document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </script>
               </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+            demo.initChartsPages();
+        });
+    </script>
 </div>
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chart JS -->
-<script src="../assets/js/plugins/chartjs.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
-<script>
-    $(document).ready(function () {
-        // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-        demo.initChartsPages();
-    });
-</script>
 </body>
 
 </html>

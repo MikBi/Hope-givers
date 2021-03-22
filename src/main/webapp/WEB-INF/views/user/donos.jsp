@@ -34,34 +34,22 @@
                     <%--    photo here     --%>
                 </div>
             </a>
-            <a href="/secretCave/dashboard" class="simple-text logo-normal">
+            <a href="/" class="simple-text logo-normal">
                 HOPE GIVERS
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li>
-                    <a href="<c:url value="/secretCave/dashboard"/>">
+                    <a href="<c:url value="/person/dashboard"/>">
                         <i class="nc-icon nc-spaceship"></i>
-                        <p>Dashboard</p>
+                        <p> Dashboard </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/users"/>">
-                        <i class="nc-icon nc-user-run"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="<c:url value="/secretCave/institutions"/>">
-                        <i class="nc-icon nc-bank"></i>
-                        <p> Institutions </p>
-                    </a>
-                </li>
-                <li>
-                    <a href="<c:url value="/secretCave/categories"/>">
-                        <i class="nc-icon nc-box"></i>
-                        <p> Category </p>
+                    <a href="<c:url value="/person/donations"/>">
+                        <i class="nc-icon nc-app"></i>
+                        <p> Donations </p>
                     </a>
                 </li>
                 <li>
@@ -137,72 +125,54 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
                         <div class="card-header">
-                            <h4 class="card-title text-center"> Add user </h4>
+                            <h4 class="card-title text-center"> Donations </h4>
                         </div>
-                        <form:form method="post"  modelAttribute="user">
-                        <div class="card-body">
-                            <div class="card card-user " style="text-align:center">
-                                <div class="col-md-4 pl-1 form-group " style="position: center">
-                                    <label for="username" class="form-label text-center">Username</label>
-                                    <form:input path="username" cssClass="form-control" id="username"/>
-                                </div>
-                                <div class="col-md-4 pl-1 form-group " style="position: center">
-                                    <label for="name" class="form-label text-center">Name</label>
-                                    <form:input path="name" cssClass="form-control" id="name"/>
-                                </div>
-                                <div class="col-md-4 pl-1 form-group " style="position: center">
-                                    <label for="surname" class="form-label text-center">Surname</label>
-                                    <form:input path="surname" cssClass="form-control" id="surname"/>
-                                </div>
-                                <div class="col-md-4 pl-1 form-group " style="position: center">
-                                    <label for="email" class="form-label text-center">Email</label>
-                                    <form:input path="email" cssClass="form-control" id="email"/>
-                                </div>
-                                <div class="col-md-4 pl-1 form-group " style="position: center">
-                                    <label for="password" class="form-label text-center">Password</label>
-                                    <form:input path="password" cssClass="form-control" id="password"/>
-                                </div>
-                                <div class="col-md-4 pl-1 form-group " style="position: center">
-                                    <label for="role" class="form-label text-center">Role</label>
-                                    <form:select itemValue="id" itemLabel="name" path="role" id="role">
-                                        <form:option value="0" label="Wybierz"/>
-                                        <form:options itemLabel="name" items="${roles}"/>
-                                    </form:select>
-                                </div>
-                                <div class="col-md-4 pl-1 form-group " style="position: center">
-                                    <button class="btn btn-outline-secondary" type="submit" id="sub">
-                                        <i class="nc-icon nc-check-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        </form:form>
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th> Type of donation</th>
+                            <th> Quantity</th>
+                            <th> Register Date & Time</th>
+                            <th> Endowed institution</th>
+                            <th> Status</th>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${dono}" var="don">
+                                <tr class="text-muted">
+                                    <td>${don.category}</td>
+                                    <td>${don.quantity}</td>
+                                    <td>${don.pickUpDate}   :    ${don.pickUpTime}</td>
+                                    <td>${don.institution.name}</td>
+                                    <td>${don.status.name}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    <footer class="footer footer-black  footer-white ">
-        <div class="container-fluid">
-            <div class="row">
-                <nav class="footer-nav">
-                    <ul>
-                        <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                        <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                        <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-                    </ul>
-                </nav>
-                <div class="credits ml-auto">
+<footer class="footer footer-black  footer-white ">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
+                    <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+                    <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+                </ul>
+            </nav>
+            <div class="credits ml-auto">
               <span class="copyright">
                 © <script>
                   document.write(new Date().getFullYear())
                 </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
               </span>
-                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 </div>
 </div>
 <!--   Core JS Files   -->
@@ -223,3 +193,4 @@
 </body>
 
 </html>
+

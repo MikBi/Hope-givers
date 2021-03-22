@@ -9,14 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.CurrentUser;
-import pl.coderslab.charity.entities.Category;
-import pl.coderslab.charity.entities.Institution;
-import pl.coderslab.charity.entities.Role;
-import pl.coderslab.charity.entities.User;
-import pl.coderslab.charity.services.CategoryService;
-import pl.coderslab.charity.services.InstitutionService;
-import pl.coderslab.charity.services.RoleService;
-import pl.coderslab.charity.services.UserService;
+import pl.coderslab.charity.entities.*;
+import pl.coderslab.charity.services.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,24 +26,26 @@ public class AdminController {
     private final CategoryService categoryService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    private final DonationService donationService;
 
-    public AdminController(InstitutionService institutionService, UserService userService, RoleService roleService, CategoryService categoryService) {
+    public AdminController(InstitutionService institutionService, UserService userService, RoleService roleService, CategoryService categoryService, DonationService donationService) {
         this.institutionService = institutionService;
         this.userService = userService;
         this.roleService = roleService;
         this.categoryService = categoryService;
+        this.donationService = donationService;
     }
 
     @GetMapping("/dashboard")
     private String dashboard() {
-        return "dashboard";
+        return "admin/dashboard";
     }
 
     @GetMapping("/institutions")
     private String institutions(Model model) {
         model.addAttribute("institutions", institutionService.all());
         model.addAttribute("newInstitution", new Institution());
-        return "instList";
+        return "admin/instList";
     }
 
     @PostMapping("instAdd")
@@ -60,13 +56,13 @@ public class AdminController {
         }
 
         institutionService.add(institution);
-        return "redirect:institutions";
+        return "redirect:admin/institutions";
     }
 
     @GetMapping("instEdit")
     private String institutionsEdit(@RequestParam Integer id, Model model) {
         model.addAttribute("institution", institutionService.single(id));
-        return "instEdit";
+        return "admin/instEdit";
     }
 
     @PostMapping("instEdit")
@@ -83,7 +79,7 @@ public class AdminController {
     @GetMapping("instDelete")
     private String institutionsDelete(@RequestParam int id) {
         institutionService.delete(id);
-        return "redirect:institutions";
+        return "redirect:admin/institutions";
     }
 
     @GetMapping("/users")
@@ -91,21 +87,21 @@ public class AdminController {
         User u = userService.single(user.getUser().getId());
         model.addAttribute("actualUser", u);
         model.addAttribute("users", userService.allButWithoutOurselves(user.getUser().getId()));
-        return "userList";
+        return "admin/userList";
     }
 
     @GetMapping("/userAdd")
     private String userAdd(Model model) {
         model.addAttribute("user", new User());
-        return "userAdd";
+        return "admin/userAdd";
     }
 
     @PostMapping("userAdd")
     private String userAddPost(@Valid User user, BindingResult result) {
 
-        if (result.hasErrors()) {
-            return null;
-        }
+//        if (result.hasErrors()) {
+//            return "userAdd";
+//        }
 
         int res = getRandomNumber(1, Integer.MAX_VALUE);
 
@@ -117,13 +113,13 @@ public class AdminController {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.add(user);
-        return "redirect:users";
+        return "redirect:admin/users";
     }
 
     @GetMapping("userEdit")
     private String userEdit(@RequestParam Integer id, Model model) {
         model.addAttribute("user", userService.single(id));
-        return "editUser";
+        return "userEdit";
     }
 
     @PostMapping("userEdit")
@@ -146,7 +142,17 @@ public class AdminController {
     }
 
     @GetMapping("userDelete")
-    private String userDelete(@RequestParam int id) {
+    private String userDelete(@RequestParam int id,@AuthenticationPrincipal CurrentUser user) {
+
+        if(userService.adminList().size() == 1) {
+            return "redirect:users";
+        }
+
+        if(id == user.getUser().getId()) {
+            userService.delete(id);
+            return "/";
+        }
+
         userService.delete(id);
         return "redirect:users";
     }
@@ -155,7 +161,7 @@ public class AdminController {
     private String categories(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("categories", categoryService.all());
-        return "categoryList";
+        return "admin/categoryList";
     }
 
     @PostMapping("catAdd")
@@ -171,7 +177,7 @@ public class AdminController {
     @GetMapping("catEdit")
     private String categoryEdit(@RequestParam Integer id, Model model) {
         model.addAttribute("category", categoryService.single(id));
-        return "catEdit";
+        return "admin/catEdit";
     }
 
     @PostMapping("catEdit")
@@ -200,6 +206,16 @@ public class AdminController {
         return roleService.all();
     }
 
+    @ModelAttribute("in24h")
+    private Integer hours() {
+        return donationService.last24h();
+    }
+
+    @ModelAttribute("QuantitySum")
+    private Integer quantity() {
+        return donationService.donationsQuantitySum();
+    }
+
 @ModelAttribute("Cuser")
 private CurrentUser currentUser(@AuthenticationPrincipal CurrentUser user) {
         return user;
@@ -207,6 +223,32 @@ private CurrentUser currentUser(@AuthenticationPrincipal CurrentUser user) {
 
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    @ModelAttribute("useres")
+    private Integer amountOfUsers() {
+        return userService.amount();
+
+    }
+
+    @ModelAttribute("instSum")
+    private Integer sum() {
+        return institutionService.sum();
+    }
+
+    @ModelAttribute("categories")
+    private List<Category> categoryList() {
+        return categoryService.all();
+    }
+
+    @ModelAttribute("donations")
+    private List<Donation> sev() {
+        return donationService.seven();
+    }
+
+    @ModelAttribute("admins")
+    private List<User> admins() {
+        return userService.adminList();
     }
 
 }

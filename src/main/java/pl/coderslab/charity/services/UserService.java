@@ -52,4 +52,13 @@ public class UserService implements SimpleServices<User> {
     public User IdCheck(int id) {
         return userRepository.findUsersByAdminId(id);
     }
+
+    public Integer amount() {
+        return userRepository.AmountOfUsers();
+    }
+
+    public List<User> adminList() {
+        return userRepository.allAdmins();
+    }
+
 }

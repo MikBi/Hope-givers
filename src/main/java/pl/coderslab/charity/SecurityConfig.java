@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/person/**").hasRole("USER_PERSON")
                 .antMatchers("/secretCave/**").hasRole("ADMIN_MEN")
+                .antMatchers("/donation/**").authenticated()
                 .and().formLogin().usernameParameter("email").loginPage("/login").successHandler(myAuthenticationSuccessHandler())
                 .and().logout().logoutSuccessUrl("/logout")
                 .and().exceptionHandling().accessDeniedPage("/403");

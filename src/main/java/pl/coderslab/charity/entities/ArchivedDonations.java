@@ -11,25 +11,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "donation")
+@Table(name = "archived_donation")
 @Data
-public class Donation {
+public class ArchivedDonations {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer quantity;
-    @NotBlank
     private String street;
-    @Pattern(regexp = "([A-Z]|[ĆŁŃÓŚŻŹ])[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]+")
     private String city;
-    @NotBlank
-    @Pattern(regexp = "[2-9]\\d{2}-\\d{3}-\\d{3}")
     private String phoneNumber;
-    @NotBlank
-    @Pattern(regexp = "[0-9]{2}-[0-9]{3}")
     private String zipCode;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private java.time.LocalDate pickUpDate;
     private java.time.LocalTime pickUpTime;
     private LocalDateTime date;
@@ -40,6 +33,5 @@ public class Donation {
     private Institution institution;
     @OneToOne
     private User user;
-    @ManyToOne
-    private Status status;
+
 }

@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -136,113 +137,52 @@
                 <div class="col-md-12">
                     <div class="card card-plain">
                         <div class="card-header">
-                            <h4 class="card-title"> Users </h4>
-                            <a href="<c:url value="/secretCave/userAdd"/>">
-                                <button type="button" class="btn btn-outline-info">
-                                    <i class="nc-icon nc-simple-add"></i>
-                                </button>
-                            </a>
+                            <h4 class="card-title text-center"> Add user </h4>
                         </div>
+                        <form:form method="post"  modelAttribute="user">
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead class=" text-primary">
-                                    <th> Username</th>
-                                    <th> Name</th>
-                                    <th> Surname</th>
-                                    <th> Email</th>
-                                    <th> Role</th>
-                                    <th> Admin id</th>
-                                    <th> Actions</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="text-warning">
-                                        <td>${actualUser.username}</td>
-                                        <td>${actualUser.name}</td>
-                                        <td>${actualUser.surname}</td>
-                                        <td>${actualUser.email}</td>
-                                        <c:if test="${actualUser.role.id == 1}">
-                                            <td> USER</td>
-                                        </c:if>
-                                        <c:if test="${actualUser.role.id == 2}">
-                                            <td> ADMIN</td>
-                                        </c:if>
-                                        <c:if test="${actualUser.adminId == null}">
-                                            <td> NO ID</td>
-                                        </c:if>
-                                        <c:if test="${actualUser.adminId != null}">
-                                            <td> ${actualUser.adminId} </td>
-                                        </c:if>
-                                        <td>
-                                            <a href="<c:url value="/secretCave/userEdit?id=${actualUser.id}"/>">
-                                                <button type="button" class="btn btn-warning">
-                                                    <i class="nc-icon nc-settings"></i>
-                                                </button>
-                                            </a>
-                                            <a href="<c:url value="/secretCave/userDelete?id=${actualUser.id}"/>">
-                                                <button type="button" class="btn btn-warning">
-                                                    <i class="nc-icon nc-simple-remove"></i>
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <c:forEach items="${users}" var="user">
-                                        <c:if test="${user.role.id == 1}">
-                                            <tr>
-                                                <td>${user.username}</td>
-                                                <td>${user.name}</td>
-                                                <td>${user.surname}</td>
-                                                <td>${user.email}</td>
-                                                    <td> USER </td>
-                                                    <td> NO ID</td>
-                                                <td>
-                                                    <a href="<c:url value="/secretCave/userEdit?id=${user.id}"/>">
-                                                        <button type="button" class="btn btn-outline-dark">
-                                                            <i class="nc-icon nc-settings "></i>
-                                                        </button>
-                                                    </a>
-
-                                                    <a href="<c:url value="/secretCave/userDelete?id=${user.id}"/>">
-                                                        <button type="button" class="btn btn-outline-dark" >
-                                                            <i class="nc-icon nc-simple-remove "></i>
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <c:if test="${user.role.id == 2}">
-                                            <tr class="text-danger">
-                                                <td>${user.username}</td>
-                                                <td>${user.name}</td>
-                                                <td>${user.surname}</td>
-                                                <td>${user.email}</td>
-                                                    <td> ADMIN </td>
-                                                    <td> ${user.adminId} </td>
-                                                <td>
-                                                    <a href="<c:url value="/secretCave/userEdit?id=${user.id}"/>">
-                                                        <button type="button" class="btn btn-danger">
-                                                            <i class="nc-icon nc-settings "></i>
-                                                        </button>
-                                                    </a>
-
-                                                    <a href="<c:url value="/secretCave/userDelete?id=${user.id}"/>">
-                                                        <button type="button" class="btn btn-danger">
-                                                            <i class="nc-icon nc-simple-remove "></i>
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
+                            <div class="card card-user " style="text-align:center">
+                                <div class="col-md-4 pl-1 form-group " style="position: center">
+                                    <label for="username" class="form-label text-center">Username</label>
+                                    <form:input path="username" cssClass="form-control" id="username"/>
+                                </div>
+                                <div class="col-md-4 pl-1 form-group " style="position: center">
+                                    <label for="name" class="form-label text-center">Name</label>
+                                    <form:input path="name" cssClass="form-control" id="name"/>
+                                </div>
+                                <div class="col-md-4 pl-1 form-group " style="position: center">
+                                    <label for="surname" class="form-label text-center">Surname</label>
+                                    <form:input path="surname" cssClass="form-control" id="surname"/>
+                                </div>
+                                <div class="col-md-4 pl-1 form-group " style="position: center">
+                                    <label for="email" class="form-label text-center">Email</label>
+                                    <form:input path="email" cssClass="form-control" id="email"/>
+                                </div>
+                                <div class="col-md-4 pl-1 form-group " style="position: center">
+                                    <label for="password" class="form-label text-center">Password</label>
+                                    <form:password path="password" cssClass="form-control" id="password"/>
+                                </div>
+                                <div class="col-md-4 pl-1 form-group " style="position: center">
+                                    <label for="role" class="form-label text-center">Role</label>
+                                    <form:select itemValue="id" itemLabel="name" path="role" id="role">
+                                        <form:option value="0" label="Wybierz"/>
+                                        <form:options itemLabel="name" items="${roles}"/>
+                                    </form:select>
+                                </div>
+                                <div class="col-md-4 pl-1 form-group " style="position: center">
+                                    <button class="btn btn-outline-secondary" type="submit" id="sub">
+                                        <i class="nc-icon nc-check-2"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                        </form:form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
             <div class="row">
@@ -281,4 +221,5 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
 </body>
+
 </html>

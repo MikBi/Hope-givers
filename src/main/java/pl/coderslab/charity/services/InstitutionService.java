@@ -39,4 +39,8 @@ public class InstitutionService implements SimpleServices<Institution> {
     public Institution single(int id) {
         return institutionRepository.findTopById(id);
     }
+
+    public Integer sum() {
+        return institutionRepository.countAllInstitutions();
+    }
 }

@@ -35,8 +35,7 @@ public class User {
     @Email(message = "Wpisz email ponownie")
     private String email;
     @NotBlank
-    @Size(min = 6, max = 30, message = "Twoje hasło jest za krótkie bądź za długie. Minimalna ilość znaków to sześć, natomiast maksymalna to trzydzieści")
-    @Pattern(regexp = ".{6,30}")
+//    @Pattern(regexp = ".{6,30}")
     private String password;
     private Integer adminId;
     @ManyToOne
