@@ -1,6 +1,5 @@
 package pl.coderslab.charity.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,17 +19,15 @@ public class HomeController {
 
     private final DonationService donationService;
     private final InstitutionService institutionService;
-    private final CategoryService categoryService;
     private final UserService userService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
 
-    public HomeController(DonationService donationService, InstitutionService institutionService, CategoryService categoryService, UserService userService, RoleService roleService) {
+    public HomeController(DonationService donationService, InstitutionService institutionService, UserService userService, PasswordEncoder passwordEncoder, RoleService roleService) {
         this.donationService = donationService;
         this.institutionService = institutionService;
-        this.categoryService = categoryService;
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
         this.roleService = roleService;
     }
 
@@ -85,11 +82,6 @@ public class HomeController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(roleService.single(1));
         userService.add(user);
-        return "login";
-    }
-
-    @GetMapping("/403")
-    private String error403() {
         return "login";
     }
 }

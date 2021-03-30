@@ -37,7 +37,7 @@ public class UserService implements SimpleServices<User> {
     }
 
     @Override
-    public User single(int id) {
+    public User findOne(int id) {
         return userRepository.findTopById(id);
     }
 

@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,12 +33,13 @@ public class Donation {
     private java.time.LocalTime pickUpTime;
     private LocalDateTime date;
     private String pickUpComment;
+    private Status status;
+    private boolean archived;
     @ManyToMany
-    private List<Category> category;
+    private List<Category> categories;
     @ManyToOne
     private Institution institution;
     @OneToOne
     private User user;
-    @ManyToOne
-    private Status status;
+
 }

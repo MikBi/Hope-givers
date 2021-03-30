@@ -34,7 +34,7 @@
                     <%--    photo here     --%>
                 </div>
             </a>
-            <a href="/secretCave/dashboard" class="simple-text logo-normal">
+            <a href="<c:url value="/secretCave/dashboard"/>" class="simple-text logo-normal">
                 HOPE GIVERS
             </a>
         </div>
@@ -140,9 +140,15 @@
                                         <label for="name" class="form-label text-center">Name</label>
                                         <form:input path="name" cssClass="form-control" id="name"/>
                                     </div>
+                                    <div>
+                                        <form:errors path="name"/>
+                                    </div>
                                     <div class="col-md-4 pl-1 form-group " style="position: center">
                                         <label for="description" class="form-label text-center">Description</label>
                                         <form:input path="description" cssClass="form-control" id="description"/>
+                                    </div>
+                                    <div>
+                                        <form:errors path="description"/>
                                     </div>
                                     <div class="col-md-4 pl-1 form-group " style="position: center">
                                         <button class="btn btn-outline-secondary" type="submit" id="sub">

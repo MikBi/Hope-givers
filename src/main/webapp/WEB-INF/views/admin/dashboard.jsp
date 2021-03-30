@@ -173,6 +173,9 @@
                                     <div class="numbers">
                                         <p class="card-category">Sum of all given bags</p>
                                         <p class="card-title">${QuantitySum}
+                                        <c:if test="${QuantitySum == null}">
+                                            0
+                                            </c:if>
                                         <p>
                                     </div>
                                 </div>
@@ -225,7 +228,7 @@
                                 </div>
                                 <div class="col-7 col-md-8">
                                     <div class="numbers">
-                                        <p class="card-category">Institutions</p>
+                                        <p class="card-category">Number of institutions</p>
                                         <p class="card-title"> ${instSum}
                                         <p>
                                     </div>
@@ -261,12 +264,16 @@
                                 <tbody>
                                 <c:forEach items="${donations}" var="don">
                                     <tr class="text-muted">
-                                        <td>${don.category}</td>
+                                        <td>
+                                        <c:forEach items="${don.categories}" var="cato">
+                                            ${cato.name}
+                                        </c:forEach>
+                                        </td>
                                         <td>${don.quantity}</td>
                                         <td>${don.date.toLocalDate()}   :    ${don.date.toLocalTime()}</td>
                                         <td>${don.institution.name}</td>
                                         <td>${don.user.username}</td>
-                                        <td>${don.status.name}</td>
+                                        <td>${don.status}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

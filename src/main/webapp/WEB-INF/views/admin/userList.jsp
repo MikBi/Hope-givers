@@ -137,7 +137,7 @@
                     <div class="card card-plain">
                         <div class="card-header">
                             <h4 class="card-title"> Users </h4>
-                            <a href="<c:url value="/secretCave/userAdd"/>">
+                            <a href="<c:url value="/secretCave/users/add"/>">
                                 <button type="button" class="btn btn-outline-info">
                                     <i class="nc-icon nc-simple-add"></i>
                                 </button>
@@ -174,13 +174,13 @@
                                             <td> ${actualUser.adminId} </td>
                                         </c:if>
                                         <td>
-                                            <a href="<c:url value="/secretCave/userEdit?id=${actualUser.id}"/>">
+                                            <a href="<c:url value="/secretCave/users/edit?id=${actualUser.id}"/>">
                                                 <button type="button" class="btn btn-warning">
                                                     <i class="nc-icon nc-settings"></i>
                                                 </button>
                                             </a>
                                             <c:if test="${admins.size() > 1}">
-                                            <a href="<c:url value="/secretCave/userDelete?id=${actualUser.id}"/>">
+                                            <a href="<c:url value="/secretCave/users/delete?id=${actualUser.id}"/>">
                                                 <button type="button" class="btn btn-warning">
                                                     <i class="nc-icon nc-simple-remove"></i>
                                                 </button>
@@ -198,13 +198,13 @@
                                                     <td> USER </td>
                                                     <td> NO ID</td>
                                                 <td>
-                                                    <a href="<c:url value="/secretCave/userEdit?id=${user.id}"/>">
+                                                    <a href="<c:url value="/secretCave/users/edit?id=${user.id}"/>">
                                                         <button type="button" class="btn btn-outline-dark">
                                                             <i class="nc-icon nc-settings "></i>
                                                         </button>
                                                     </a>
 
-                                                    <a href="<c:url value="/secretCave/userDelete?id=${user.id}"/>">
+                                                    <a href="<c:url value="/secretCave/users/delete?id=${user.id}"/>">
                                                         <button type="button" class="btn btn-outline-dark" >
                                                             <i class="nc-icon nc-simple-remove "></i>
                                                         </button>
@@ -221,13 +221,13 @@
                                                     <td> ADMIN </td>
                                                     <td> ${user.adminId} </td>
                                                 <td>
-                                                    <a href="<c:url value="/secretCave/userEdit?id=${user.id}"/>">
+                                                    <a href="<c:url value="/secretCave/users/edit?id=${user.id}"/>">
                                                         <button type="button" class="btn btn-danger">
                                                             <i class="nc-icon nc-settings "></i>
                                                         </button>
                                                     </a>
                                                     <c:if test="${admins.size() > 1}">
-                                                    <a href="<c:url value="/secretCave/userDelete?id=${user.id}"/>">
+                                                    <a href="<c:url value="/secretCave/users/delete?id=${user.id}"/>">
                                                         <button type="button" class="btn btn-danger">
                                                             <i class="nc-icon nc-simple-remove "></i>
                                                         </button>

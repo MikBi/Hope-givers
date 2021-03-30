@@ -36,7 +36,7 @@ public class InstitutionService implements SimpleServices<Institution> {
     }
 
     @Override
-    public Institution single(int id) {
+    public Institution findOne(int id) {
         return institutionRepository.findTopById(id);
     }
 

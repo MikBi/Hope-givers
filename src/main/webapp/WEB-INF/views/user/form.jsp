@@ -117,7 +117,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bagsNum" id="bagsNum" step="1" min="1" value="1" max="200" />
+                        <input type="number" name="quantity" id="quantity" step="1" min="1" value="1" max="200"/>
                     </label>
                 </div>
 
@@ -135,7 +135,7 @@
                 <div class="form-group form-group--checkbox">
                     <c:forEach items="${institutions}" var="ints">
                     <label>
-                        <input type="radio" name="institutions" value="${ints.id}" id="institutions" data-name= ${ints.name} />
+                        <input type="radio" name="institution" value="${ints.id}" id="institutions" data-name= ${ints.name} />
                         <span class="checkbox radio"></span>
                         <span class="description">
                   <div class="title">Fundacja ${ints.name}</div>
@@ -185,17 +185,17 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data" id="d"/> </label>
+                            <label> Data <input type="date" name="pickUpDate" id="d"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time" id="t"/> </label>
+                            <label> Godzina <input type="time" name="pickUpTime" id="t"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="more_info" rows="5" id="no"></textarea>
+                                <textarea name="pickUpComment" rows="5" id="no"></textarea>
                             </label>
                         </div>
                     </div>
@@ -240,9 +240,9 @@
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li id="date">13/12/2018</li>
-                                <li id="time">15:40</li>
-                                <li id="note">Brak uwag</li>
+                                <li id="date"></li>
+                                <li id="time"></li>
+                                <li id="note"></li>
                             </ul>
                         </div>
                     </div>

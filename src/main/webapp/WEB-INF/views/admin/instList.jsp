@@ -147,9 +147,15 @@
                                             <label for="name" class="form-label text-center">Name</label>
                                             <form:input path="name" cssClass="form-control" id="name"/>
                                         </div>
+                                        <div>
+                                            <form:errors path="name"/>
+                                        </div>
                                         <div class="col-md-4 pl-1 form-group " style="position: center">
                                             <label for="description" class="form-label text-center">Description</label>
                                             <form:input path="description" cssClass="form-control" id="description"/>
+                                        </div>
+                                        <div>
+                                            <form:errors path="description"/>
                                         </div>
                                         <div class="col-md-4 pl-1 form-group " style="position: center">
                                             <button class="btn btn-outline-secondary" type="submit" id="sub">
@@ -175,13 +181,13 @@
                                         <td>${inst.name}</td>
                                         <td>${inst.description}</td>
                                         <td>
-                                            <a href="<c:url value="/secretCave/instEdit?id=${inst.id}"/>">
+                                            <a href="<c:url value="/secretCave/institutions/edit?id=${inst.id}"/>">
                                                 <button type="button" class="btn btn-dark">
                                                     <i class="nc-icon nc-settings "></i>
                                                 </button>
                                             </a>
 
-                                            <a href="<c:url value="/secretCave/instDelete?id=${inst.id}"/>">
+                                            <a href="<c:url value="/secretCave/institutions/delete?id=${inst.id}"/>">
                                                 <button type="button" class="btn btn-dark">
                                                     <i class="nc-icon nc-simple-remove "></i>
                                                 </button>

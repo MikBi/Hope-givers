@@ -248,11 +248,15 @@
                                 <tbody>
                                 <c:forEach items="${dono}" var="don">
                                     <tr class="text-muted">
-                                        <td>${don.category}</td>
+                                        <td>
+                                        <c:forEach items="${don.categories}" var="cato">
+                                            ${cato.name}
+                                        </c:forEach>
+                                        </td>
                                         <td>${don.quantity}</td>
                                         <td>${don.pickUpDate}   :    ${don.pickUpTime}</td>
                                         <td>${don.institution.name}</td>
-                                        <td>${don.status.name}</td>
+                                        <td>${don.status}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

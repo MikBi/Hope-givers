@@ -15,5 +15,5 @@ public interface SimpleServices <T> {
 
     List<T> all();
 
-    T single(int id);
+    T findOne(int id);
 }

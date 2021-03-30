@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="col-md-4 pl-1 form-group " style="position: center">
                                     <label for="password" class="form-label text-center">Password</label>
-                                    <form:input path="password" cssClass="form-control" id="password"/>
+                                    <input type="password" name="password" id="password">
                                 </div>
                                 <div class="col-md-4 pl-1 form-group " style="position: center">
                                     <label for="role" class="form-label text-center">Role</label>

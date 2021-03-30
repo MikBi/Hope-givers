@@ -1,9 +1,6 @@
 package pl.coderslab.charity.entities;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,7 +20,7 @@ public class User {
     private Integer id;
     @NotBlank
     @Size(min = 3, max = 15, message = "Twoja nazwa użytkownika jest za krótka bądź za długa. Minimalna ilość znaków to trzy, natomiast maksymalna to 15")
-    @Pattern(regexp = "[A-z]{3}[A-z0-9.\\-_]{0,12}" ,message = "Twoja nazwa użytkownika jest nieprawidłowa. Powinna się składać z minimum trzech liter oraz maksymalnie z dodatkowych 12 liter/cyfr bądź znaków takich jak kropka,myślnik bądź znaku podkreślenia")
+    @Pattern(regexp = "[A-z]{3}[A-z0-9.\\-]{0,12}" ,message = "Twoja nazwa użytkownika jest nieprawidłowa. Powinna się składać z minimum trzech liter oraz maksymalnie z dodatkowych 12 liter/cyfr bądź znaków takich jak kropka,myślnik bądź znaku podkreślenia")
     private String username;
     @NotBlank
     @Pattern(regexp = "[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻż]{3,13}", message = "Wpisz imię ponownie")
@@ -35,7 +32,6 @@ public class User {
     @Email(message = "Wpisz email ponownie")
     private String email;
     @NotBlank
-//    @Pattern(regexp = ".{6,30}")
     private String password;
     private Integer adminId;
     @ManyToOne

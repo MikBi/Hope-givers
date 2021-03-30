@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
       this.slides.forEach(slide => {
         slide.classList.remove("active");
 
-        if (slide.dataset.step == this.currentStep) {
+        if (slide.dataset.step === this.currentStep) {
           slide.classList.add("active");
         }
       });
@@ -164,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
     }
 
   }
@@ -172,10 +173,6 @@ document.addEventListener("DOMContentLoaded", function() {
     new FormSteps(form);
   }
 
-const bag =  document.querySelector("#bag")
-  const bags = document.querySelector("#bags")
-const bagValue = document.createElement("span")
-  bagValue.classList.add("summary--text")
-  // bagValue.textContent = bags.dataset
-  bag.appendChild(bagValue)
+
+
 });

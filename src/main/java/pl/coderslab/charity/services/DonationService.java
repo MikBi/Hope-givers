@@ -38,7 +38,7 @@ public class DonationService implements SimpleServices<Donation> {
     }
 
     @Override
-    public Donation single(int id) {
+    public Donation findOne(int id) {
         return donationRepository.findTopById(id);
     }
 
@@ -62,11 +62,11 @@ public class DonationService implements SimpleServices<Donation> {
         return donationRepository.myAllDonations(id);
     }
 
-    public List<Donation> MySeven(int id) {
+    public List<Donation> mySeven(int id) {
         return  donationRepository.getMine7Donations(id);
     }
 
-    public Integer MyAmount(int id) {
+    public Integer myAmount(int id) {
         return donationRepository.countMyDonations(id);
     }
 

@@ -36,7 +36,7 @@ public class CategoryService implements SimpleServices<Category> {
     }
 
     @Override
-    public Category single(int id) {
+    public Category findOne(int id) {
         return categoryRepository.findTopById(id);
     }
 
