@@ -1,10 +1,6 @@
 # Hope givers
 
-## Let's get started
-
-x
-x
-x
+Hope givers is a solution, with gives a tools to manage donation site.
 
 ## Motivations
 
@@ -19,6 +15,6 @@ xxx
 Done | In progress | Future ideas
 -----| ----------- | ------------
 [x] Landing page | [ ] Confirmation of given donation by email | [ ] Autocompliting zip code by entering adress in donation section
-[x] Login/register | ----------- | [ ] Preview of location by google maps
-[x] Administration and user panel | ----------- | [ ] Login by fb or google
+[x] Login/register |  | [ ] Preview of location by google maps
+[x] Administration and user panel |  | [ ] Login by fb or google
 [x] Donation page |
