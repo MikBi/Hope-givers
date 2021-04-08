@@ -6,10 +6,6 @@ Hope givers is a solution, with gives a tools to manage donation site.
 
 I want to create modern looking and safety space to link charity institutions with people, who wants to donate.
 
-## Demo
-
-xxx
-
 ## Features by now
 
 Done | In progress | Future ideas
