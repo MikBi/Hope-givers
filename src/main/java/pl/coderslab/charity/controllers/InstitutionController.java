@@ -15,8 +15,8 @@ import pl.coderslab.charity.services.InstitutionService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/secretCave/institutions")
-@Secured("ROLE_ADMIN_MEN")
+@RequestMapping("/admin_Island/institutions")
+@Secured("ROLE_ADMIN_PLACE")
 public class InstitutionController {
 
     private final InstitutionService institutionService;

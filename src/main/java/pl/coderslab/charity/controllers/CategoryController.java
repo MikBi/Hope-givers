@@ -14,8 +14,8 @@ import pl.coderslab.charity.services.CategoryService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/secretCave/categories")
-@Secured("ROLE_ADMIN_MEN")
+@RequestMapping("/admin_Island/categories")
+@Secured("ROLE_ADMIN_PLACE")
 public class CategoryController {
 
     private final CategoryService categoryService;

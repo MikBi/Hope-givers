@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     User findUsersByAdminId(int id);
 
     @Query("select count(u) from User u")
-    Integer AmountOfUsers();
+    Integer amountOfUsers();
 
     @Query("select u from User u where u.role.id = 2")
     List<User> allAdmins();

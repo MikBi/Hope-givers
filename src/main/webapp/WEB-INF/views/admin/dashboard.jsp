@@ -33,32 +33,32 @@
                     <%--                    <img src="../assets/img/logo-small.png">--%>
                 </div>
             </a>
-            <a href="<c:url value="/secretCave/dashboard"/>" class="simple-text logo-normal">
+            <a href="<c:url value="/admin_Island/dashboard"/>" class="simple-text logo-normal">
                 Hope givers
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li>
-                    <a href="<c:url value="/secretCave/dashboard"/>">
+                    <a href="<c:url value="/admin_Island/dashboard"/>">
                         <i class="nc-icon nc-spaceship"></i>
                         <p> Dashboard </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/users"/>">
+                    <a href="<c:url value="/admin_Island/users/"/>">
                         <i class="nc-icon nc-user-run"></i>
                         <p> Users </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/institutions"/>">
+                    <a href="<c:url value="/admin_Island/institutions/"/>">
                         <i class="nc-icon nc-bank"></i>
                         <p> Institutions </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/categories"/>">
+                    <a href="<c:url value="/admin_Island/categories/"/>">
                         <i class="nc-icon nc-box"></i>
                         <p> Category </p>
                     </a>
@@ -85,7 +85,7 @@
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:;">Witaj ${Cuser.user.name}
+                    <a class="navbar-brand" href="javascript:;">Witaj ${Current.user.name}
                         <div></div>
                     </a>
                     <div class="navbar-toggle">

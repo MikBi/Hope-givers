@@ -10,8 +10,8 @@ import pl.coderslab.charity.services.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/secretCave")
-@Secured("ROLE_ADMIN_MEN")
+@RequestMapping("/admin_Island")
+@Secured("ROLE_ADMIN_PLACE")
 public class AdminController {
 
     private final InstitutionService institutionService;
@@ -31,8 +31,7 @@ public class AdminController {
         return "admin/dashboard";
     }
 
-
-    @ModelAttribute("Cuser")
+    @ModelAttribute("Current")
     private CurrentUser currentUser(@AuthenticationPrincipal CurrentUser user) {
         return user;
     }
@@ -43,9 +42,7 @@ public class AdminController {
     }
 
     @ModelAttribute("QuantitySum")
-    private Integer quantity() {
-        return donationService.donationsQuantitySum();
-    }
+    private Integer quantity() { return donationService.donationsQuantitySum(); }
 
     @ModelAttribute("useres")
     private Integer amountOfUsers() {

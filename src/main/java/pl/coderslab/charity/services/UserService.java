@@ -49,12 +49,12 @@ public class UserService implements SimpleServices<User> {
         return userRepository.findWithoutMe(id);
     }
 
-    public User IdCheck(int id) {
+    public User idCheck(int id) {
         return userRepository.findUsersByAdminId(id);
     }
 
     public Integer amount() {
-        return userRepository.AmountOfUsers();
+        return userRepository.amountOfUsers();
     }
 
     public List<User> adminList() {

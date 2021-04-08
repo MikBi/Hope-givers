@@ -40,25 +40,25 @@
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li>
-                    <a href="<c:url value="/secretCave/dashboard"/>">
+                    <a href="<c:url value="/admin_Island/dashboard"/>">
                         <i class="nc-icon nc-spaceship"></i>
-                        <p>Dashboard</p>
+                        <p> Dashboard </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/users"/>">
+                    <a href="<c:url value="/admin_Island/users/"/>">
                         <i class="nc-icon nc-user-run"></i>
-                        <p>Users</p>
+                        <p> Users </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/institutions"/>">
+                    <a href="<c:url value="/admin_Island/institutions/"/>">
                         <i class="nc-icon nc-bank"></i>
                         <p> Institutions </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/categories"/>">
+                    <a href="<c:url value="/admin_Island/categories/"/>">
                         <i class="nc-icon nc-box"></i>
                         <p> Category </p>
                     </a>
@@ -68,7 +68,7 @@
                         <a>
                             <form action="<c:url value="/logout"/>" method="post">
                                 <i class="nc-icon nc-button-power"></i>
-                                <button type="submit">
+                                <button type="submit" name="Logout">
                                     <p> Logout </p>
                                 </button>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -260,7 +260,7 @@
               <span class="copyright">
                 © <script>
                   document.write(new Date().getFullYear())
-                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </script>
               </span>
                 </div>
             </div>

@@ -41,25 +41,25 @@
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li>
-                    <a href="<c:url value="/secretCave/dashboard"/>">
+                    <a href="<c:url value="/admin_Island/dashboard"/>">
                         <i class="nc-icon nc-spaceship"></i>
-                        <p>Dashboard</p>
+                        <p> Dashboard </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/users"/>">
+                    <a href="<c:url value="/admin_Island/users/"/>">
                         <i class="nc-icon nc-user-run"></i>
-                        <p>Users</p>
+                        <p> Users </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/institutions"/>">
+                    <a href="<c:url value="/admin_Island/institutions/"/>">
                         <i class="nc-icon nc-bank"></i>
                         <p> Institutions </p>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/secretCave/categories"/>">
+                    <a href="<c:url value="/admin_Island/categories/"/>">
                         <i class="nc-icon nc-box"></i>
                         <p> Category </p>
                     </a>

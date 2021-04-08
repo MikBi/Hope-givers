@@ -9,17 +9,13 @@ import pl.coderslab.charity.entities.*;
 import pl.coderslab.charity.services.CategoryService;
 import pl.coderslab.charity.services.DonationService;
 import pl.coderslab.charity.services.InstitutionService;
-
 import javax.validation.Valid;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/donation")
-@Secured({"ROLE_ADMIN_MEN", "ROLE_USER_PERSON"})
+@Secured({"ROLE_ADMIN_PLACE", "ROLE_USER_DONOR"})
 public class DonationController {
 
     private final DonationService donationService;
@@ -35,21 +31,18 @@ public class DonationController {
     @GetMapping("/give")
     public String give(Model model) {
         model.addAttribute("donation", new Donation());
-        return "user/form";
+        return "user/dono";
     }
 
     @PostMapping("/give")
     public String postGive(@Valid Donation donation, @AuthenticationPrincipal CurrentUser currentUser) {
-
-
-        LocalDateTime localDate = LocalDateTime.now();
-        donation.setDate(localDate);
+        donation.setDate(LocalDateTime.now());
         User user = currentUser.getUser();
         donation.setUser(user);
         donation.setStatus(Status.REGISTERED);
         donation.setArchived(false);
         donationService.add(donation);
-        return "user/form-confirmation";
+        return "user/DonoConfirmation";
     }
 
     @ModelAttribute("categories")

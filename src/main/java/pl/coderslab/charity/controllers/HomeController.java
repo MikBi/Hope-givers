@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entities.Institution;
 import pl.coderslab.charity.entities.User;
 import pl.coderslab.charity.services.*;
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -22,6 +21,7 @@ public class HomeController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
+    private static final String REGISTER = "register";
 
     public HomeController(DonationService donationService, InstitutionService institutionService, UserService userService, PasswordEncoder passwordEncoder, RoleService roleService) {
         this.donationService = donationService;
@@ -33,51 +33,50 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    private String homeAction() {
+    public String homeAction() {
         return "index";
     }
 
-
     @ModelAttribute("donationsSum")
-    private Integer donations() {
+    public Integer donations() {
         return donationService.donationsSum();
     }
 
     @ModelAttribute("donationsQuantitySum")
-    private Integer quantity() {
+    public Integer quantity() {
         return donationService.donationsQuantitySum();
     }
 
     @ModelAttribute("institutions")
-    private List<Institution> institutions() {
+    public List<Institution> institutions() {
         return institutionService.all();
     }
 
     @GetMapping("/login")
-    private String login() {
+    public String login() {
         return "login";
     }
 
     @GetMapping("/logout")
-    private String logout() {
+    public String logout() {
         return "redirect:login";
     }
 
     @GetMapping("/register")
-    private String register(Model model) {
+    public String register(Model model) {
         model.addAttribute("user", new User());
-        return "register";
+        return REGISTER;
     }
 
     @PostMapping("/register")
-    private String register(@Valid User user, BindingResult result, @RequestParam String repass) {
+    public String register(@Valid User user, BindingResult result, @RequestParam String repass) {
 
         if (result.hasErrors()) {
-            return "register";
+            return REGISTER;
         }
 
         if (!user.getPassword().equals(repass)) {
-            return "register";
+            return REGISTER;
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(roleService.single(1));
