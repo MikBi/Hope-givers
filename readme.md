@@ -1,12 +1,20 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+# Hope givers
 
+Hope givers is a solution, with gives a tools to manage donation site.
 
-Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
-## Jak zacząć?
+## Motivations
 
-1. Zaimportuj projekt jako projekt `Maven`, wg poniższych wskazówek:
+I want to create modern looking and safety space to link charity institutions with people, who wants to donate.
 
-	* W `IntelliJ` wybieramy: `File –> New –> Project from Existing Sources...`
-	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
-	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
-	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
+## Demo
+
+xxx
+
+## Features by now
+
+Done | In progress | Future ideas
+-----| ----------- | ------------
+[x] Landing page | [ ] Confirmation of given donation by email | [ ] Autocompliting zip code by entering adress in donation section
+[x] Login/register |  | [ ] Preview of location by google maps
+[x] Administration and user panel |  | [ ] Login by fb or google
+[x] Donation page |
